@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -41,6 +42,8 @@ app.use('/api/payments/webhook', paymentWebhookRoutes);
 app.use('/api/admin/inventory', inventoryRoutes);
 app.use('/api/settings', siteSettingsRoutes);
 
+app.use(express.static(path.join(__dirname, "../public")));
+app.use((req, res, next) => { if (req.method === "GET" && !req.path.startsWith("/api/")) return res.sendFile(path.join(__dirname, "../public/index.html")); next(); });
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, '0.0.0.0', () => {
