@@ -3,9 +3,7 @@ import './App.css'
 
 function App() {
   const [section, setSection] = useState('dashboard')
-  const [loggedIn, setLoggedIn] = useState(
-    Boolean(localStorage.getItem('hiengame_token'))
-  )
+  const [loggedIn, setLoggedIn] = useState(true)
   const [settings, setSettings] = useState(null)
   const [saveMessage, setSaveMessage] = useState('')
 
