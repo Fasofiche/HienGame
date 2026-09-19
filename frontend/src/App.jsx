@@ -13,7 +13,7 @@ function App() {
     setSaveMessage('Enregistrement...')
 
     try {
-      const response = await fetch('https://hiengame.onrender.com/api/settings', {
+      const response = await fetch('/api/settings', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch('https://hiengame.onrender.com/api/settings')
+    fetch('/api/settings')
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -65,7 +65,7 @@ function App() {
 
               try {
                 const response = await fetch(
-                  'https://hiengame.onrender.com/api/auth/login',
+                  '/api/auth/login',
                   {
                     method: 'POST',
                     headers: {
